@@ -17,7 +17,7 @@ class Test1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def Test1_TC1(self):
+    def testTest1Tc1(self):
         self.assertEqual(1, 0)
         self.assertEqual(0, 1)
         self.assertEqual(1, 1)

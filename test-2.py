@@ -1,4 +1,6 @@
 import unittest
+from teamcity import is_running_under_teamcity
+from teamcity.unittestpy import TeamcityTestRunner
 
 
 class Test2(unittest.TestCase):
@@ -17,7 +19,7 @@ class Test2(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def Test2_TC1(self):
+    def testTest2Tc1(self):
         self.assertEqual(1, 0)
         self.assertEqual(0, 1)
         self.assertEqual(1, 1)
@@ -25,4 +27,9 @@ class Test2(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    if is_running_under_teamcity():
+        runner = TeamcityTestRunner()
+    else:
+        runner = unittest.TextTestRunner()
+    unittest.main(testRunner=runner)
+
